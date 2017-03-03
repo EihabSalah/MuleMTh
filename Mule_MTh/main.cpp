@@ -357,7 +357,7 @@ void* callMTh (void *arguments){
         pthread_mutex_lock (&mutexx);
         //        cout << "Thread: " << (args -> id) << " working on this node_id: " << p_counter << endl;
         if(levelOne[p_counter] != NULL){
-     //       cout << "Thread "<< args -> id << " working on: " << p_counter << " out of " << levelOne.size() << endl;
+            cout << "Thread "<< args -> id << " working on: " << p_counter << " out of " << levelOne.size() << endl;
             MinePathways(levelOne[p_counter], minsup, mfs_s[args -> id]);
             //End critical section
         }
@@ -501,7 +501,6 @@ int main(int argc, const char * argv[]) {
     //######ending the pthread things
     excludeRecurrences();
     cout << "::Done::" << endl;
-    
     time_t t_3 = time(0);
     cout << "Algorithm's time: " << t_3-t_2 << endl;
 

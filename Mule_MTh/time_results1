@@ -1,4 +1,5 @@
+sh: line 1:  5100 Killed: 9               ./mule_MTh ../../data/randomGraphs/randomGraph_seed_10_dense_0.4_freq_40.txt ../../data/randomGraphs/randomAttributes_seed_10_dense_0.4_freq_40.txt results/res_seed_10_dense_0.4_freq_40_minsup_10 10 4 2
 
-real	3m0.626s
-user	0m0.487s
-sys	0m0.139s
+real	1m20.464s
+user	1m19.759s
+sys	0m0.416s

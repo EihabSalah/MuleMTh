@@ -385,6 +385,7 @@ void createThreads (int counter_threads){
       //  printf("Creating thread %d\n", index);
         result_code = pthread_create( &threads[index], NULL, callMTh, &argus[index] );
         assert( !result_code );
+        
 
     }
     for( index = 0; index < counter_threads; ++index )

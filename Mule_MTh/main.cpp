@@ -48,6 +48,7 @@ int minsup = 0;
 int minsize = 0;
 int counter = 0 ;
 int p_counter = 0 ;
+int version = 0;
 pthread_mutex_t mutexx = PTHREAD_MUTEX_INITIALIZER;
 
 vector<int > D;
@@ -123,8 +124,8 @@ vector <int> UnionEdges(vector <int> X1, int X2){
 
 vector <int> updateCandidates(vector <int> candidates,vector <int> new_candidate,vector <int> visited){
     vector <int> result,result1;
-    std::sort(candidates.begin(), candidates.end());
-    std::sort(new_candidate.begin(), new_candidate.end());
+//    std::sort(candidates.begin(), candidates.end());
+//    std::sort(new_candidate.begin(), new_candidate.end());
     std::sort(visited.begin(), visited.end());
     
     std::set_union(candidates.begin(), candidates.end(),
@@ -352,30 +353,7 @@ void fillLevelOneV2(){
             }
         }
     }
-//
-//    for (int i=0;i<levelOne.size();i++){
-//        if(levelOne[i] !=NULL){
-//            vector<int> cand;
-//            vis.push_back(i);
-//            int current_id = levelOne[i]->item[0];
-//            //cout << "C_id " << current_id << endl;
-//            for (int j=i+1;j<levelOne.size();j++){
-//                if( levelOne[j] != NULL){
-//                    int next_id = levelOne[j]->item[0];
-//                    //cout << "N_id " << next_id << endl;
-//                    
-//                    if(edges[current_id].first == edges[next_id].first || edges[current_id].first == edges[next_id].second
-//                       || edges[current_id].second == edges[next_id].first || edges[current_id].second == edges[next_id].second ){
-//                        cand.push_back(next_id);
-//                    }
-//                }
-//                levelOne[i]->candidates = cand;
-//                levelOne[i]->visited = vis;
-//            }
-//        }
-//    }
-    
-    }
+}
 
 //#############MinePathways###################
 
@@ -544,8 +522,10 @@ int main(int argc, const char * argv[]) {
     cout << "::edges loaded::" << endl;
     
         minsup = atoi(argv[4]);
-        minsize = atoi(argv[6]);
-    counter_threads =atoi(argv[5]);
+        minsize = atoi(argv[5]);
+    version =atoi(argv[6]);
+    counter_threads =atoi(argv[7]);
+
 //
 //    minsize = 2;
 //    counter_threads = 4;
@@ -556,7 +536,13 @@ int main(int argc, const char * argv[]) {
     
     //    fill levelOne
     cout << ">>fill levelOne..." << endl;
-    fillLevelOneV2();
+    if (version == 1){
+        fillLevelOne();
+        
+    }else if (version == 2){
+        fillLevelOneV2();
+ 
+    }
     cout << "::levelOne filled::" << endl;
     
     time_t t_2 = time(0);

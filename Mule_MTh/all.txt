@@ -1,0 +1,7 @@
+ [1] ""                                        "###"                                    
+ [3] ""                                        "CPP = g++"                              
+ [5] "INCLUDE="                                ""                                       
+ [7] ""                                        "### Targets"                            
+ [9] "all:"                                    "\tg++ -O3 main.cpp -o mule_MTh -pthread"
+[11] ""                                        "clean:"                                 
+[13] "\trm -f *.o"                             ""                                       

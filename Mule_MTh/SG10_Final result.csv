@@ -1,0 +1,7 @@
+,FileName,1 Thread,2 Threads,4 Threads,8 Threads
+1,res_30.txt,1,2,1,2
+2,res_29.txt,2,2,2,2
+3,res_28.txt,3,3,3,3
+4,res_27.txt,7,7,6,6
+5,res_26.txt,15,13,12,12
+6,res_25.txt,33,34,29,30

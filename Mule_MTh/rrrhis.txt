@@ -1,0 +1,458 @@
+X <-2
+X
+X <- 3
+X
+X <- 1
+X <-10
+X
+X
+N <- 12 + 3
+N
+rnorm(5)
+y <- rnorm(5)
+y
+5+y[3]
+5+y[1]
+tempf <- c(78,46,73,67)
+tempc <- (tempf-32) * 5/9
+sqrt(sum((tempsC - mean(tempsC))ˆ2)/(length(tempsC)-1))
+sqrt(sum((tempc - mean(tempc))ˆ2)/(length(tempc)-1))
+sqrt(sum((tempc - mean(tempc))ˆ2)/(length(tempc)-1))
+sd(tempc)
+index (1:4)
+index <- (1:4)
+plot(index, tempc)
+help("plot")
+plot(index, tempc, l)
+plot(index, tempc, "l")
+plot(index, tempc, "h")
+lines(index, tempc)
+plot(index, tempc, "l")
+lines(index, tempc)
+a <- 1:10
+b <- letters[1:5]
+save(a,b, file = "./data/myDataFile.Rdata")
+save(a,b, file = "/Desktop/myDataFile.Rdata")
+save(a,b, file = "/Desktop/RFiles/myDataFile.Rdata")
+Sys.getenv('JAVA_HOME')
+Sys.getenv('LD_LIBRARY_PATH')
+library("foreign", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+detach("package:rJava", unload=TRUE)
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+install.packages("rJava")
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+detach("package:rJava", unload=TRUE)
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+install.packages("rJava")
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+Sys.getenv('JAVA_HOME')
+Sys.getenv('LD_LIBRARY_PATH')
+library("RWeka", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+detach("package:rJava", unload=TRUE)
+library("rJava", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+detach("package:RWeka", unload=TRUE)
+library("RWeka", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+library("foreign", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+detach("package:foreign", unload=TRUE)
+library("foreign", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+r = 1
+load("~/Desktop/Untitled.R")
+install.packages("infotheo")
+library("infotheo", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+x = c()
+y = c()
+x[1] = 0.2;
+x[2] = 0.3;
+x[3] = 0.4;
+x[4] = 0.1;
+x[5] = 0.2;
+y[1] = 1;
+y[2] = 0;
+y[3] = 0;
+y[4] = 1;
+y[5] = 1;
+mutinformation(x,y)
+mutinformation(x,y,method = "emp")
+mutinformation(x,y,method = "mm")
+install.packages("entropy")
+library("entropy", lib.loc="/Library/Frameworks/R.framework/Versions/3.2/Resources/library")
+xy = matrix(0,5,2)
+View(xy)
+xy[,1] = x
+xy[,2] = y
+mi.plugin(xy)
+mutinformation(c(1,2,3,4,5), c(5,3,4,6,7))
+xy = matrix(0,5,2)
+xy[,1] = c(1,2,3,4,5)
+xy[,2] = c(5,3,4,6,7)
+mi.plugin(xy)
+xy = matrix(0,5,2)
+xy[,1] = x
+xy[,2] = y
+mi.plugin(xy)
+mi.plugin(xy, unit = "log")
+View(xy)
+mi.plugin(xy, unit = "log2")
+mi.plugin(xy, unit = "log10")
+mutinformation(xy)
+mutinformation(x,y)
+mutinformation(x,y, method = "emp")
+x = c()
+y = c()
+x[1] = 1;
+x[2] = 0;
+x[3] = 1;
+x[4] = 1;
+x[5] = 1;
+y[1] = 1;
+y[2] = 0;
+y[3] = 0;
+y[4] = 1;
+y[5] = 1;
+xy = matrix(0,5,2)
+xy[,1] = x
+xy[,2] = y
+mi.plugin(xy, unit = "log10")
+mutinformation(x,y, method = "emp")
+mi.plugin(xy, unit = "log")
+mi.plugin(xy, unit = "log2")
+x = c()
+y = c()
+x[1] = 1;
+x[2] = 0;
+x[3] = 1;
+x[4] = 1;
+x[5] = 1;
+y[1] = 1;
+y[2] = 0;
+y[3] = 0;
+y[4] = 1;
+y[5] = 1;
+xy = matrix(0,5,2)
+xy[,1] = x
+xy[,2] = y
+mi.plugin(xy, unit = "log2")
+mutinformation(x,y, method = "emp")
+x = c()
+y = c()
+x[1] = 1;
+x[2] = 0;
+x[3] = 1;
+x[4] = 1;
+x[5] = 1;
+y[1] = 1;
+y[2] = 0;
+y[3] = 0;
+y[4] = 1;
+y[5] = 1;
+xy = matrix(0,5,2)
+xy[,1] = x
+xy[,2] = y
+mi.plugin(xy, unit=c("log", "log2", "log10"))
+mutinformation(x,y, method = "emp")
+mi.plugin(xy, unit=c("log2", "log10"))
+mi.plugin(xy, unit = "log2")
+mi.plugin(xy, unit = "log")
+mi.plugin(xy, unit = "log10")
+xy = cbind(x,y)
+x = c(1,0,1,1,1)
+y = c(1,0,0,1,1)
+xy = cbind(x,y)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( c(0.2, 0.1, 0.15), c(0.1, 0.2, 0.25) )
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( c(0.2, 0.2, 0.6), c(0.1, 0.4, 0.5) )
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+mi.plugin(freqs2d, unit = "log")
+mi.plugin(freqs2d, unit = "log2")
+mi.plugin(freqs2d, unit = "log10")
+x = c(0, 0.0714286, 0.142857, 0.214286, 0.285714, 0.357143, 0.428571, 0.5, 0.571429, 0.642857, 0.714286, 0.785714, 0.857143, 0.928571, 1)
+y = c(0, 0.85326, -0.832071, 0.648169, 0.719598, -0.617785, 1.2104, 0.5, -0.210403, 1.61779, 0.280402, 0.351831, 1.83207, 0.14674, 1)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( x,y )
+# corresponding mutual information
+mi.plugin(freqs2d, unit = "log10")
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( x,y )
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+mutinformation(x,y)
+x = c(1,2,3,3,3,1,2,2,2,2,3,3,3,3,3)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+pp = c(1/15,1/15,3/15)
+np = c(1/15,4/15,5/15)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+View(freqs2d)
+sum(freqs2d)
+mutinformation(x,y)
+y = c(1, 1, 1, 0, 0);
+x = (1, 0, 1, 1, 0);
+mutinformation(x,y)
+y = c(1, 1, 1, 0, 0)
+x = (1, 0, 1, 1, 0)
+mutinformation(x,y)
+y = c(1, 1, 1, 0, 0)
+x = c(1, 0, 1, 1, 0)
+mutinformation(x,y)
+x = c(1,1,1,1,1,3,3,3,3,3,3,3,3,3,3)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+mutinformation(x,y)
+x = c(3,1,1,1,1,3,3,3,3,3,3,3,3,3,3)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+mutinformation(x,y)
+x = c(3,3,3,3,3,3,3,3,3,3,3,3,3,3,3)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+mutinformation(x,y)
+ccc = c()
+tem  = "1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"
+for(i in strsplit(tem, " "))
+ccc = append(ccc, i)
+ccc
+ccc = c()
+tem  = "1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"
+for(i in as.numeric(strsplit(tem, " ")))
+ccc = append(ccc, i)
+ccc = c()
+tem  = "1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"
+for(i in strsplit(tem, " "))
+ccc = append(ccc, as.numeric(i))
+ccc2 = c()
+tem2 = "0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 0 1 1 0 0 0 0 0"
+for(i in strsplit(tem, " "))
+ccc = append(ccc, as.numeric(i))
+mutinformation(ccc,ccc2)
+ccc = c()
+ccc2 = c()
+atttt  = "1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"
+for(i in strsplit(tem, " "))
+ccc = append(ccc, as.numeric(i))
+calsss = "0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 0 1 1 0 0 0 0 0"
+for(i in strsplit(tem, " "))
+ccc2 = append(ccc2, as.numeric(i))
+mutinformation(ccc,ccc2)
+ccc = c()
+ccc2 = c()
+atttt  = "1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1"
+for(i in strsplit(tem, " "))
+ccc = append(ccc, as.numeric(i))
+calsss = "0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 0 1 1 0 0 0 0 0"
+for(i in strsplit(tem, " "))
+ccc2 = append(ccc2, as.numeric(i))
+#x = c(3,1,1,1,1,3,3,3,3,3,3,3,3,3,3)
+#x = c(3,3,3,3,3,3,3,3,3,3,3,3,3,3,3)
+#y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+mutinformation(ccc,ccc2)
+ccc = c()
+ccc2 = c()
+atttt  = "1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1"
+for(i in strsplit(tem, " "))
+ccc = append(ccc, as.numeric(i))
+calsss = "0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 0 1 0 1 1 0 1 1 0 0 0 0 0"
+for(i in strsplit(tem, " "))
+ccc2 = append(ccc2, as.numeric(i))
+#x = c(3,1,1,1,1,3,3,3,3,3,3,3,3,3,3)
+#x = c(3,3,3,3,3,3,3,3,3,3,3,3,3,3,3)
+#y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+mutinformation(ccc,ccc2)
+pp = c(1/15,1/15,3/15)
+np = c(1/15,4/15,5/15)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+rowSums(freqs2d)
+Px = rowSums(freqs2d)
+Py = colSums(freqs2d)
+n = dim(freqs2d)[1]
+m = dim(freqs2d)[2]
+MI = 0
+for (i in 1:n){
+for(j in 1:m){
+MI = MI + (freqs2d[i,j] * log(freqs2d[i,j] / (Px[i] * Py[j] )))
+}
+}
+MI
+x = c(1,2,3,3,3,1,2,2,2,2,3,3,3,3,3)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+pp = c(1/15,1/15,3/15,0,0)
+np = c(1/15,4/15,5/15,0,0)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+dim(freqs2d)
+Px
+Py
+n
+m
+n = dim(freqs2d)[1]
+m = dim(freqs2d)[2]
+MI = 0
+for (i in 1:n){
+for(j in 1:m){
+MI = MI + (freqs2d[i,j] * log(freqs2d[i,j] / (Px[i] * Py[j] )))
+}
+}
+MI
+ccc
+pp = c(0.2, 0.133333, 0, 0, 0)
+np = c(0, 0.0666667, 0.2, 0.2, 0.2)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+n = dim(freqs2d)[1]
+m = dim(freqs2d)[2]
+MI = 0
+for (i in 1:n){
+for(j in 1:m){
+MI = MI + (freqs2d[i,j] * log(freqs2d[i,j] / (Px[i] * Py[j] )))
+}
+}
+MI
+h1
+H1
+H2
+H12
+rowSums(freqs2d)
+colSums(freqs2d)
+cat(ccc, sep = ",")
+cat(ccc2, sep = ",")
+pp = c(2/15, 3/15, 0, 0, 0)
+np = c(5/15, 5/15, 0, 0, 0.2)
+load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+n = dim(freqs2d)[1]
+m = dim(freqs2d)[2]
+MI = 0
+for (i in 1:n){
+for(j in 1:m){
+MI = MI + (freqs2d[i,j] * log(freqs2d[i,j] / (Px[i] * Py[j] )))
+}
+}
+MI
+# x = c(1,2,3,3,3,1,2,2,2,2,3,3,3,3,3)
+x = c(1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+pp = c(2/15, 3/15, 0, 0, 0)
+np = c(5/15, 5/15, 0, 0, 0)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+n = dim(freqs2d)[1]
+m = dim(freqs2d)[2]
+MI = 0
+for (i in 1:n){
+for(j in 1:m){
+MI = MI + (freqs2d[i,j] * log(freqs2d[i,j] / (Px[i] * Py[j] )))
+}
+}
+MI
+# x = c(1,2,3,3,3,1,2,2,2,2,3,3,3,3,3)
+x = c(1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2)
+y = c(0,0,0,0,0,1,1,1,1,1,1,1,1,1,1)
+pp = c(2/15, 3/15)
+np = c(5/15, 5/15)
+# load entropy library
+library("entropy")
+# joint distribution of two discrete variables
+freqs2d = rbind( pp,np)
+# corresponding mutual information
+mi.plugin(freqs2d)
+# MI computed via entropy
+H1 = entropy.plugin(rowSums(freqs2d))
+H2 = entropy.plugin(colSums(freqs2d))
+H12 = entropy.plugin(freqs2d)
+H1+H2-H12
+n = dim(freqs2d)[1]
+m = dim(freqs2d)[2]
+MI = 0
+for (i in 1:n){
+for(j in 1:m){
+MI = MI + (freqs2d[i,j] * log(freqs2d[i,j] / (Px[i] * Py[j] )))
+}
+}
+MI
+setwd("/Users/eihabsalah/research/dm/CPP/Algorithms/Mule_MTh/Mule_MTh/")
+savehistory("rrrhis.txt")

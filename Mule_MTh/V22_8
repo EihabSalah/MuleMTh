@@ -1,0 +1,16 @@
+>>loading attributes...
+::attributes loaded::
+time: 2
+>>loading edges...
+::edges loaded::
+>>fill levelOne...
+::levelOne filled::
+time: 7
+size of levelone: 1678
+>>Working on threads...
+::Done::
+Algorithm's time: 564
+*********Final Result***********
+number of patterns: 14075
+time: 0
+Total time: 571

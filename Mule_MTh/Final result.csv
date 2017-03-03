@@ -1,0 +1,4 @@
+,FileName,1 Thread,2 Threads,4 Threads,8 Threads
+1,res_16.txt,0,1,0,1
+2,res_15.txt,6,7,7,6
+3,res_14.txt,208,198,183,159

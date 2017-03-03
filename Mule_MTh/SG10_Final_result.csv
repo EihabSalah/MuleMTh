@@ -1,0 +1,6 @@
+,FileName,1 Thread,2 Threads,4 Threads,8 Threads
+1,results/res_25.txt,34,33,29,27
+2,results/res_24.txt,81,81,70,69
+3,results/res_23.txt,229,220,195,180
+4,results/res_22.txt,704,681,589,564
+5,results/res_21.txt,2369,2292,1988,1925

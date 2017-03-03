@@ -302,6 +302,80 @@ void fillLevelOne(){
         }
     }
 }
+//####################fillLevelOneV2#####################
+
+void fillLevelOneV2(){
+    vector<int> neighbors;
+    vector<int> visited;
+    
+    for (int i=0;i<edges.size();i++){
+        int mycount = count (v_attributes[i].begin(), v_attributes[i].end(), 1);
+        if (mycount >= minsup){
+            vector<int> new_x;
+            new_x.push_back(i);
+            Pattern *pp = new Pattern(new_x, neighbors, neighbors,v_attributes[i],visited);
+            levelOne.push_back(pp);
+        }else{
+            levelOne.push_back(NULL);
+        }
+    }
+    vector<int> vis;
+
+    // populate neighbors
+    for (int i=0;i<levelOne.size();i++){
+        if(levelOne[i] !=NULL){
+            vis.push_back(i);
+            int current_id = levelOne[i]->item[0];
+            //cout << "C_id " << current_id << endl;
+            for (int j=0;j<levelOne.size();j++){
+                if( levelOne[j] != NULL){
+                    if( i ==j){
+                        continue;
+                    }
+                    int next_id = levelOne[j]->item[0];
+                    //cout << "N_id " << next_id << endl;
+                    
+                    if(edges[current_id].first == edges[next_id].first || edges[current_id].first == edges[next_id].second
+                       || edges[current_id].second == edges[next_id].first || edges[current_id].second == edges[next_id].second ){
+                        pair<vector<int>, int> v3;
+                        v3 =logical_And(levelOne[i]->attributes,levelOne[j]->attributes);
+                        if(v3.second >= minsup){
+                            levelOne[i]->neighbors.push_back(next_id);
+                            if(j>i){
+                                levelOne[i]->candidates.push_back(next_id);
+                            }
+                        }
+                        
+                    }
+                }
+                levelOne[i]->visited = vis;
+            }
+        }
+    }
+//
+//    for (int i=0;i<levelOne.size();i++){
+//        if(levelOne[i] !=NULL){
+//            vector<int> cand;
+//            vis.push_back(i);
+//            int current_id = levelOne[i]->item[0];
+//            //cout << "C_id " << current_id << endl;
+//            for (int j=i+1;j<levelOne.size();j++){
+//                if( levelOne[j] != NULL){
+//                    int next_id = levelOne[j]->item[0];
+//                    //cout << "N_id " << next_id << endl;
+//                    
+//                    if(edges[current_id].first == edges[next_id].first || edges[current_id].first == edges[next_id].second
+//                       || edges[current_id].second == edges[next_id].first || edges[current_id].second == edges[next_id].second ){
+//                        cand.push_back(next_id);
+//                    }
+//                }
+//                levelOne[i]->candidates = cand;
+//                levelOne[i]->visited = vis;
+//            }
+//        }
+//    }
+    
+    }
 
 //#############MinePathways###################
 
@@ -482,7 +556,7 @@ int main(int argc, const char * argv[]) {
     
     //    fill levelOne
     cout << ">>fill levelOne..." << endl;
-    fillLevelOne();
+    fillLevelOneV2();
     cout << "::levelOne filled::" << endl;
     
     time_t t_2 = time(0);

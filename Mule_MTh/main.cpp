@@ -23,7 +23,8 @@
 
 using namespace std;
 struct arg_struct {
-    
+    //    Pattern* P;
+    //    int minsup;
     //    vector<Pattern* > & MFS;
     int id;
 };
@@ -40,7 +41,6 @@ vector< Pattern* > MFS;
 
 // the map witch the elements of file with IDs will stored in
 vector<vector<int> > v_attributes; // matrix-like to put the attributes in
-vector<vector<bool> > v_attributesBool; // matrix-like to put the attributes in
 long n_nodes ;
 vector< pair<int, int> > edges;
 int maxx =0;
@@ -48,38 +48,15 @@ int minsup = 0;
 int minsize = 0;
 int counter = 0 ;
 int p_counter = 0 ;
-int p_counter_reverse = 0 ;
-vector<int> LevelOneClean;
-vector <pair<int, int> > LevelOneSorted;
-
 int version = 0;
-pthread_mutex_t mutexx1 = PTHREAD_MUTEX_INITIALIZER;
-//pthread_mutex_t mutexx2 = PTHREAD_MUTEX_INITIALIZER;
-//pthread_mutex_t mutexx3 = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t mutexx = PTHREAD_MUTEX_INITIALIZER;
 
-//#############printVector#################
-
-void printVector(vector <bool> x){
-    for (int i=0;i<x.size();i++){
-        cout << x[i]<< " ";
-    }
-    cout <<endl;
-}
-
+vector<int > D;
 //#############printVector#################
 
 void printVector(vector <int> x){
     for (int i=0;i<x.size();i++){
         cout << x[i]<< " ";
-    }
-    cout <<endl;
-}
-
-//#############printVector2#################
-
-void printPair(vector <int> x){
-    for (int i=0;i<x.size();i++){
-        cout << i << " : " << x[i]<< endl;
     }
     cout <<endl;
 }
@@ -147,8 +124,8 @@ vector <int> UnionEdges(vector <int> X1, int X2){
 
 vector <int> updateCandidates(vector <int> candidates,vector <int> new_candidate,vector <int> visited){
     vector <int> result,result1;
-    std::sort(candidates.begin(), candidates.end());
-    std::sort(new_candidate.begin(), new_candidate.end());
+    //    std::sort(candidates.begin(), candidates.end());
+    //    std::sort(new_candidate.begin(), new_candidate.end());
     std::sort(visited.begin(), visited.end());
     
     std::set_union(candidates.begin(), candidates.end(),
@@ -159,25 +136,6 @@ vector <int> updateCandidates(vector <int> candidates,vector <int> new_candidate
                         std::inserter(result1, result1.end()));
     
     return result1;
-}
-
-//############newLogicalAnd##################
-
-vector<int> newLogicalAnd(vector<int> X1, vector<int> X2){
-    vector<int> v3(X1.size());
-    transform(X1.begin(), X1.end(),
-              X2.begin(), v3.begin(), logical_and<int>());
-    
-    return v3;
-}
-//############newLogicalAndBool##################
-
-vector<bool> newLogicalAndBool(vector<bool> X1, vector<bool> X2){
-    vector<bool> v3(X1.size());
-    transform(X1.begin(), X1.end(),
-              X2.begin(), v3.begin(), logical_and<bool>());
-    
-    return v3;
 }
 //############logical_And##################
 
@@ -233,23 +191,6 @@ vector <string> split(string line) {
     
     return tokens;
 }
-//###################split###########################
-// The function "split" to to split the line coming from the file into tokens  (split by space)
-
-//vector <char> splitToChar(string line) {
-//    vector <char> res;
-//    vector<string> tokens;
-//    istringstream iss(line);
-//    copy(istream_iterator<string>(iss),
-//         istream_iterator<string>(),
-//         back_inserter(tokens));
-//    
-//    res.reserve( res.size() + B.size() ); // preallocate memory
-//    AB.insert( AB.end(), A.begin(), A.end() );
-//
-//    
-//    return tokens;
-//}
 
 //##################loadAttributes###################
 //Load the file and call split to split the line and store it in attributes vector
@@ -268,28 +209,6 @@ void loadAttributes(string path) {
     }
     input.close();
 }
-
-//##################loadAttributes###################
-//Load the file and call split to split the line and store it in attributes vector
-
-void loadAttributesBool(string path) {
-    
-    std::ifstream file(path, std::ios::binary);
-    char data;
-  
-    for (std::string line; getline(file, line);) {
-            vector <string> v_char_attributes = split(line);
-        vector<bool> myVec;
-        for(int i = 0; i < v_char_attributes.size(); i++)
-            myVec.push_back(v_char_attributes[i] == "1");
-        v_attributesBool.push_back(myVec);
-        }
-    
-    file.close();
-
-    }
-
-
 
 //####################loadEdges#####################
 //Load the file and call split to split the line and store it in a map
@@ -321,11 +240,11 @@ void fillLevelOne(){
     vector<int> visited;
     
     for (int i=0;i<edges.size();i++){
-        int mycount = count (v_attributesBool[i].begin(), v_attributesBool[i].end(), 1);
+        int mycount = count (v_attributes[i].begin(), v_attributes[i].end(), 1);
         if (mycount >= minsup){
             vector<int> new_x;
             new_x.push_back(i);
-            Pattern *pp = new Pattern(new_x, neighbors, neighbors,v_attributesBool[i],visited);
+            Pattern *pp = new Pattern(new_x, neighbors, neighbors,v_attributes[i],visited);
             levelOne.push_back(pp);
         }else{
             levelOne.push_back(NULL);
@@ -391,18 +310,18 @@ void fillLevelOneV2(){
     vector<int> visited;
     
     for (int i=0;i<edges.size();i++){
-        int mycount = count (v_attributesBool[i].begin(), v_attributesBool[i].end(), true);
+        int mycount = count (v_attributes[i].begin(), v_attributes[i].end(), 1);
         if (mycount >= minsup){
             vector<int> new_x;
             new_x.push_back(i);
-            Pattern *pp = new Pattern(new_x, neighbors, neighbors,v_attributesBool[i],visited);
+            Pattern *pp = new Pattern(new_x, neighbors, neighbors,v_attributes[i],visited);
             levelOne.push_back(pp);
         }else{
             levelOne.push_back(NULL);
         }
     }
-    
     vector<int> vis;
+    
     // populate neighbors
     for (int i=0;i<levelOne.size();i++){
         if(levelOne[i] !=NULL){
@@ -419,9 +338,9 @@ void fillLevelOneV2(){
                     
                     if(edges[current_id].first == edges[next_id].first || edges[current_id].first == edges[next_id].second
                        || edges[current_id].second == edges[next_id].first || edges[current_id].second == edges[next_id].second ){
-                        vector<bool> v3 = newLogicalAndBool(levelOne[i]->attributes,levelOne[j]->attributes);
-                       int mycount = count(v3.begin(), v3.end(), true);
-                        if(mycount >= minsup){
+                        pair<vector<int>, int> v3;
+                        v3 =logical_And(levelOne[i]->attributes,levelOne[j]->attributes);
+                        if(v3.second >= minsup){
                             levelOne[i]->neighbors.push_back(next_id);
                             if(j>i){
                                 levelOne[i]->candidates.push_back(next_id);
@@ -440,12 +359,14 @@ void fillLevelOneV2(){
 
 void MinePathways(Pattern* P, int minsup, vector<Pattern* > & MFS) {
     bool isMaximal = true;
-    
     for (int j = 0; j < P->candidates.size(); j++) {
         int idx = P->candidates[j];
         P->visited.push_back(idx);
-        vector<bool> v3 = newLogicalAndBool(v_attributesBool[idx],P->attributes);
-        long mycount = count(v3.begin(), v3.end(), true);
+        D.push_back(idx);
+        pair<vector<int>, int> v3;
+        v3 =logical_And(v_attributes[idx],P->attributes);
+        int mycount = v3.second;
+        vector<int> att = v3.first;
         if (mycount >= minsup){
             vector <int> W_items;
             W_items = UnionEdges(P->item,idx);
@@ -453,7 +374,7 @@ void MinePathways(Pattern* P, int minsup, vector<Pattern* > & MFS) {
             isMaximal = false;
             vector <int> W_candidates;
             W_candidates =updateCandidates(P->candidates, levelOne[idx]->neighbors, P->visited);
-            Pattern* new_p = new Pattern (W_items,W_candidates,P->neighbors,v3,P->visited);
+            Pattern* new_p = new Pattern (W_items,W_candidates,P->neighbors,att,P->visited);
             MinePathways(new_p, minsup, MFS);
         }
     }
@@ -475,7 +396,7 @@ void MinePathways(Pattern* P, int minsup, vector<Pattern* > & MFS) {
     
 }
 
-//#############Calling multithreading###################
+//#############Ccalling multithreading###################
 
 void* callMTh (void *arguments){
     struct arg_struct *args = (struct arg_struct *)arguments;
@@ -485,7 +406,7 @@ void* callMTh (void *arguments){
             break;
         }
         //start critical section
-        pthread_mutex_lock (&mutexx1);
+        pthread_mutex_lock (&mutexx);
         //        cout << "Thread: " << (args -> id) << " working on this node_id: " << p_counter << endl;
         if(levelOne[p_counter] != NULL){
             cout << "Thread "<< args -> id << " working on: " << p_counter << " out of " << levelOne.size() << endl;
@@ -494,156 +415,36 @@ void* callMTh (void *arguments){
         }
         p_counter  += 1;
         //End critical section
-        pthread_mutex_unlock (&mutexx1);
+        pthread_mutex_unlock (&mutexx);
     }
     printf( "Thread %d has completed\n", args -> id );
     pthread_exit( &args -> id);
     
 }
 
-//#############Calling multithreading###################
-
-void* callMThClean (void *arguments){
-    struct arg_struct *args = (struct arg_struct *)arguments;
-    //int cc = * (int*) arg;
-    while (true){
-        if(p_counter >= LevelOneClean.size() ){
-            break;
-        }
-        //start critical section
-        pthread_mutex_lock (&mutexx1);
-        if(levelOne[LevelOneClean[p_counter]] != NULL){
-            
-            cout << "Thread: "<< args -> id << " working on: " << p_counter << " out of " << LevelOneClean.size()-1 << endl;
-            //cout << "mapped to: " << LevelOneClean[p_counter] << endl;
-            MinePathways(levelOne[LevelOneClean[p_counter]], minsup, mfs_s[args -> id]);
-            //End critical section
-        }
-        p_counter+=1;
-        //End critical section
-        pthread_mutex_unlock (&mutexx1);
-        
-    }
-    printf( "Thread %d has completed\n", args -> id );
-    pthread_exit(NULL);
-    
-}
-//#############Calling multithreading###################
-
-void* callMThCleanRev (void *arguments){
-    struct arg_struct *args = (struct arg_struct *)arguments;
-    //int cc = * (int*) arg;
-    while (true){
-        if(p_counter_reverse < 0){
-            break;
-        }
-        //start critical section
-        pthread_mutex_lock (&mutexx1);
-        if(levelOne[LevelOneClean[p_counter_reverse]] != NULL){
-            
-            cout << "Thread: "<< args -> id << " working on: " << p_counter_reverse << " out of " << LevelOneClean.size()-1 << endl;
-            //cout << "mapped to: " << LevelOneClean[p_counter] << endl;
-            MinePathways(levelOne[LevelOneClean[p_counter_reverse]], minsup, mfs_s[args -> id]);
-            //End critical section
-        }
-        
-        p_counter_reverse -= 1;
-        //End critical section
-        pthread_mutex_unlock (&mutexx1);
-        
-    }
-    printf( "Thread %d has completed\n", args -> id );
-    pthread_exit(NULL);
-    
-}
-//#############Calling multithreading###################
-
-void* callMThReverse (void *arguments){
-    struct arg_struct *args = (struct arg_struct *)arguments;
-    //int cc = * (int*) arg;
-    while (true){
-        if(p_counter_reverse < 0){
-            break;
-        }
-        //start critical section
-        pthread_mutex_lock (&mutexx1);
-        if(levelOne[p_counter_reverse] != NULL){
-            cout << "Thread "<< args -> id << " working on: " << p_counter_reverse << " out of " << levelOne.size() << endl;
-            MinePathways(levelOne[p_counter_reverse], minsup, mfs_s[args -> id]);
-            //End critical section
-        }
-        p_counter_reverse -= 1;
-        //End critical section
-        pthread_mutex_unlock (&mutexx1);
-    }
-    printf( "Thread %d has completed\n", args -> id );
-    pthread_exit(NULL);
-    
-}
-
-//#############Calling multithreading###################
-
-void* callMThSorted (void *arguments){
-    struct arg_struct *args = (struct arg_struct *)arguments;
-    //int cc = * (int*) arg;
-    while (true){
-        if(p_counter_reverse < 0){
-            break;
-        }
-        //start critical section
-        pthread_mutex_lock (&mutexx1);
-        
-        if(levelOne[LevelOneSorted[p_counter_reverse].second] != NULL){
-            
-            cout << "Thread: "<< args -> id << " working on: " << p_counter_reverse << " out of " << LevelOneClean.size()-1 << endl;
-            //cout << "mapped to: " << LevelOneClean[p_counter] << endl;
-            MinePathways(levelOne[LevelOneSorted[p_counter_reverse].second], minsup, mfs_s[args -> id]);
-            //End critical section
-        }
-        p_counter_reverse -= 1;
-        //End critical section
-        pthread_mutex_unlock (&mutexx1);
-        
-    }
-    printf( "Thread %d has completed\n", args -> id );
-    pthread_exit(NULL);
-    
-}
-
-
 //#############CreateThreads###################
 void createThreads (int counter_threads){
     pthread_t threads[ counter_threads ];
+    int result_code;
     unsigned index;
+    
+    
     
     struct arg_struct argus[counter_threads];
     
     for ( index = 0; index < counter_threads; ++index ){
         argus[index].id = index;
         //  printf("Creating thread %d\n", index);
-        if(version == 3){
-            pthread_create( &threads[index], NULL, callMThClean, &argus[index] );
-            
-        }else if (version == 4){
-            pthread_create( &threads[index], NULL, callMThReverse, &argus[index] );
-            
-        }else if (version == 5){
-            pthread_create( &threads[index], NULL, callMThCleanRev, &argus[index] );
-            
-        }else if (version == 6){
-            pthread_create( &threads[index], NULL, callMThSorted, &argus[index] );
-            
-        }else{
-            pthread_create( &threads[index], NULL, callMTh, &argus[index] );
-            
-        }
+        result_code = pthread_create( &threads[index], NULL, callMTh, &argus[index] );
+        assert( !result_code );
+        
         
     }
     for( index = 0; index < counter_threads; ++index )
     {
         // block until thread 'index' completes
-        //        cout << "Joining thread: " << index << endl;
-        pthread_join( threads[ index ], NULL );
+        result_code = pthread_join( threads[ index ], NULL );
+        assert( !result_code );
         //    printf( "Thread %d has been joined\n", index );
     }
     
@@ -675,6 +476,7 @@ void excludeRecurrences(){
             MFS.push_back(mfs_general[i]);
         }
     }
+    
 }
 
 //#############printOutput###################
@@ -705,15 +507,12 @@ int main(int argc, const char * argv[]) {
     time_t t = time(0);
     vector<int> temp = *new vector<int>(0);
     cout << ">>loading attributes..." << endl;
-    
-//    loadAttributes(argv[2]);
-    loadAttributesBool(argv[2]);
+    loadAttributes(argv[2]);
     cout << v_attributes.size() <<endl;
     
     //    loadAttributes("hs_datasetSup10AttributeMatrix.txt");
     cout << "::attributes loaded::" << endl;
-    printVector(v_attributesBool[1]);
-
+    
     time_t t_22 = time(0);
     cout << "time: " << t_22-t << endl;
     
@@ -740,7 +539,7 @@ int main(int argc, const char * argv[]) {
     if (version == 1){
         fillLevelOne();
         
-    }else{
+    }else if (version == 2){
         fillLevelOneV2();
         
     }
@@ -749,50 +548,21 @@ int main(int argc, const char * argv[]) {
     time_t t_2 = time(0);
     cout << "time: " << t_2-t << endl;
     int counter = 0;
-        for (int i = 0; i < levelOne.size(); i++) {
-            if(levelOne[i] != NULL){
-                counter ++;
-                LevelOneClean.push_back(i);
-            }
+    for (int i = 0; i < levelOne.size(); i++) {
+        if(levelOne[i] != NULL){
+            counter ++;
         }
-    
-    if(version == 6){
-        for (int i = 0; i < levelOne.size(); i++) {
-            if(levelOne[i] != NULL){
-                LevelOneSorted.push_back(make_pair( levelOne[i]->candidates.size(),i));
-            }
-        }
-        std::sort(LevelOneSorted.begin(), LevelOneSorted.end());
-        
-    }
-    //    for (int i = 0; i < LevelOneSorted.size(); i++) {
-    //
-    //        cout << LevelOneSorted[i].first<< ","<< LevelOneSorted[i].second <<  endl;
-    //    }
-    
-    
-    if(version == 4){
-        p_counter_reverse = levelOne.size()-1;
-        
-    }else if(version == 5 || version == 6){
-        p_counter_reverse = LevelOneClean.size()-1;
-        
     }
     cout << "size of levelone: " <<counter<<endl;
     cout << ">>Working on threads..." << endl;
     
     //######starting the pthread things
-    time_t t_thr = time(0);
-    cout << "time: " << t_thr-t_2 << endl;
     createThreads(counter_threads);
-    time_t t_t = time(0);
-    cout << "threads time: " << t_t-t_thr << endl;
-    
     //######ending the pthread things
     excludeRecurrences();
     cout << "::Done::" << endl;
     time_t t_3 = time(0);
-    cout << "Algorithm's time: " << t_3-t_thr << endl;
+    cout << "Algorithm's time: " << t_3-t_2 << endl;
     
     cout << "*********Final Result***********"<<endl;
     string path = argv[3];

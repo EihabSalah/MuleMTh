@@ -28,16 +28,16 @@ public:
     vector<int>  item;
     vector<int> candidates;
     vector<int> neighbors;
-    vector<int> attributes;
+    vector<bool> attributes;
     vector<int> visited;
     
     
-    Pattern(vector<int> my_item, vector<int> my_candidates, vector<int> my_neighbors, vector<int> my_attributes,
+    Pattern(vector<int> my_item, vector<int> my_candidates, vector<int> my_neighbors, vector<bool> my_attributes,
             vector<int> my_visited){
         item = vector<int>(my_item.begin(),my_item.end());
         candidates = vector<int>(my_candidates.begin(),my_candidates.end());
         neighbors =  vector<int>(my_neighbors.begin(),my_neighbors.end());
-        attributes = vector<int>(my_attributes.begin(),my_attributes.end());
+        attributes = vector<bool>(my_attributes.begin(),my_attributes.end());
         visited = vector<int>(my_visited.begin(),my_visited.end());
         
     }
@@ -69,7 +69,7 @@ public:
         return neighbors;
     }
     
-    vector<int> getAttributes(){
+    vector<bool> getAttributes(){
         return attributes;
     }
     
@@ -90,7 +90,7 @@ public:
         copy(neighbors.begin(), neighbors.end(), ostream_iterator<int>(cout, " "));
         cout << endl;
         cout << "attributes: ";
-        copy(attributes.begin(), attributes.end(), ostream_iterator<int>(cout, " "));
+        copy(attributes.begin(), attributes.end(), ostream_iterator<bool>(cout, " "));
         cout << endl;
         cout << "visited: ";
         copy(visited.begin(), visited.end(), ostream_iterator<int>(cout, " "));
